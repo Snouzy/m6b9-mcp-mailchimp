@@ -7,6 +7,13 @@ import { registerMemberTools } from "./tools/members.js";
 import { registerCampaignTools } from "./tools/campaigns.js";
 import { registerTemplateTools } from "./tools/templates.js";
 import { registerReportTools } from "./tools/reports.js";
+import { registerSegmentTools } from "./tools/segments.js";
+import { registerMergeFieldTools } from "./tools/merge-fields.js";
+import { registerAutomationTools } from "./tools/automations.js";
+import { registerInterestTools } from "./tools/interests.js";
+import { registerConversationTools } from "./tools/conversations.js";
+import { registerFileTools } from "./tools/files.js";
+import { registerDomainTools } from "./tools/domains.js";
 
 const server = new McpServer({
   name: "mailchimp",
@@ -30,6 +37,13 @@ registerMemberTools(server);
 registerCampaignTools(server);
 registerTemplateTools(server);
 registerReportTools(server);
+registerSegmentTools(server);
+registerMergeFieldTools(server);
+registerAutomationTools(server);
+registerInterestTools(server);
+registerConversationTools(server);
+registerFileTools(server);
+registerDomainTools(server);
 
 const transport = new StdioServerTransport();
 await server.connect(transport);

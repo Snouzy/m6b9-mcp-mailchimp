@@ -170,4 +170,14 @@ export function registerCampaignTools(server: McpServer) {
       };
     },
   );
+
+  server.tool(
+    "get_campaign_content",
+    "Get the HTML/text content of a campaign",
+    { campaign_id: z.string().describe("The campaign ID") },
+    async ({ campaign_id }) => {
+      const data = await mc(`/campaigns/${campaign_id}/content`);
+      return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
+    },
+  );
 }

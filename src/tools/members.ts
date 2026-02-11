@@ -159,4 +159,17 @@ export function registerMemberTools(server: McpServer) {
       };
     },
   );
+
+  server.tool(
+    "delete_member",
+    "Permanently delete a member from an audience (irreversible, unlike archive)",
+    {
+      list_id: z.string().describe("The audience/list ID"),
+      email: z.string().email().describe("Email address to permanently delete"),
+    },
+    async ({ list_id, email }) => {
+      await mc(`/lists/${list_id}/members/${md5(email)}/actions/delete-permanent`, { method: "POST" });
+      return { content: [{ type: "text", text: `Permanently deleted ${email} from list ${list_id}` }] };
+    },
+  );
 }
