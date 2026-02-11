@@ -1,0 +1,28 @@
+{
+  "name": "@m6b9/mcp-mailchimp",
+  "version": "1.0.0",
+  "description": "MCP server for Mailchimp Marketing API",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-mailchimp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
